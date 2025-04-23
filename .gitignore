@@ -1,6 +1,6 @@
 target/
 .idea/
-allure-reports/
+allure-results/
 logs/
 reports/
 screenshot/
