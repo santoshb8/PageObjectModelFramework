@@ -20,6 +20,11 @@ this.prop = prop;
     public ChromeOptions getChromeOption()
     {
         co = new ChromeOptions();
+        if(Boolean.parseBoolean(prop.getProperty("remote").trim()))
+        {
+            Log.info("Running in Remote  mode");
+            co.setCapability("browserName","chrome");
+        }
         if(Boolean.parseBoolean(prop.getProperty("headless").trim()))
         {
             Log.info("Running in Headless mode");
@@ -35,6 +40,11 @@ this.prop = prop;
     public EdgeOptions getEdgeOption()
     {
         eo = new EdgeOptions();
+        if(Boolean.parseBoolean(prop.getProperty("remote").trim()))
+        {
+            Log.info("Running in Remote  mode");
+            eo.setCapability("browserName","edge");
+        }
         if(Boolean.parseBoolean(prop.getProperty("headless").trim()))
         {
             Log.info("Running in Headless mode");
@@ -50,6 +60,11 @@ this.prop = prop;
     public FirefoxOptions getFirefoxOptions()
     {
         fo = new FirefoxOptions();
+        if(Boolean.parseBoolean(prop.getProperty("remote").trim()))
+        {
+            Log.info("Running in Remote  mode");
+            fo.setCapability("browserName","firefox");
+        }
         if(Boolean.parseBoolean(prop.getProperty("headless").trim()))
         {
             Log.info("Running in headless mode");
