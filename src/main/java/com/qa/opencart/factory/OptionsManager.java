@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class OptionsManager {
@@ -24,6 +26,12 @@ this.prop = prop;
         {
             Log.info("Running in Remote  mode");
             co.setCapability("browserName","chrome");
+            co.setBrowserVersion(prop.getProperty("browserversion").trim());
+            Map<String, Object> selenoidOptions = new HashMap<>();
+            selenoidOptions.put("screenResolution", "1280x1024x24");
+            selenoidOptions.put("enableVNC", true);
+            selenoidOptions.put("name", prop.getProperty("testname"));
+            co.setCapability("selenoid:options", selenoidOptions);
         }
         if(Boolean.parseBoolean(prop.getProperty("headless").trim()))
         {
@@ -44,6 +52,13 @@ this.prop = prop;
         {
             Log.info("Running in Remote  mode");
             eo.setCapability("browserName","edge");
+            eo.setBrowserVersion(prop.getProperty("browserversion"));
+            //edge browser does not support selenoid
+//            Map<String, Object> selenoidOptions = new HashMap<>();
+//            selenoidOptions.put("screenResolution", "1280x1024x24");
+//            selenoidOptions.put("enableVNC", true);
+//           // selenoidOptions.put("name", prop.getProperty("testname"));
+//            eo.setCapability("selenoid:options", selenoidOptions);
         }
         if(Boolean.parseBoolean(prop.getProperty("headless").trim()))
         {
@@ -64,7 +79,14 @@ this.prop = prop;
         {
             Log.info("Running in Remote  mode");
             fo.setCapability("browserName","firefox");
+            fo.setBrowserVersion(prop.getProperty("browserversion"));
+            Map<String, Object> selenoidOptions = new HashMap<>();
+            selenoidOptions.put("screenResolution", "1280x1024x24");
+            selenoidOptions.put("enableVNC", true);
+            selenoidOptions.put("name", prop.getProperty("testname"));
+            fo.setCapability("selenoid:options", selenoidOptions);
         }
+
         if(Boolean.parseBoolean(prop.getProperty("headless").trim()))
         {
             Log.info("Running in headless mode");

@@ -26,25 +26,29 @@ public class BaseTest {
     protected SoftAssert softAssert;
     protected RegistartionPage registartionPage;
 
-    @Parameters({"browser"})
+    @Parameters({"browser","browserversion","testname"})
     @BeforeTest
-    public void setup(String BrowserName)
+    public void setup(String BrowserName,String browserversion,String testname)
     {
-        System.out.println(BrowserName);
+        System.out.println(BrowserName +"   "+browserversion);
         df = new DriverFactory();
 
         prop = df.initProp();
-        if(BrowserName!=null)
+        if(BrowserName!=null && browserversion!=null)
         {
             prop.setProperty("browser",BrowserName);
+            prop.setProperty("browserversion",browserversion);
+            prop.setProperty("testname",testname);
+
+
 
         }
        driver = df.initDriver(prop);
         loginpage = new LoginPage(driver);
         softAssert = new SoftAssert();
         // Cast WebDriver to RemoteWebDriver to access SessionId
-        SessionId sessionId = ((RemoteWebDriver) driver).getSessionId();
-        System.out.println("Session ID: " + sessionId.toString());
+//        SessionId sessionId = ((RemoteWebDriver) driver).getSessionId();
+//        System.out.println("Session ID: " + sessionId.toString());
     }
 
     @AfterTest
