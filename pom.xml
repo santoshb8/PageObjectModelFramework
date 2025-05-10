@@ -107,14 +107,7 @@
     </dependency>
   </dependencies>
   <build>
-    <testResources>
-      <testResource>
-        <directory>src/test/Resources</directory>
-        <includes>
-          <include>**/*.xml</include>
-        </includes>
-      </testResource>
-    </testResources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -155,7 +148,7 @@
           <forkCount>3</forkCount>
           <reuseForks>true</reuseForks>
           <suiteXmlFiles>
-            <suiteXmlFile>src/test/Resources/Testrunners/testng_regression.xml</suiteXmlFile>
+            <suiteXmlFile>src/test/resources/Testrunners/testng_regression.xml</suiteXmlFile>
             <!-- <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> -->
           </suiteXmlFiles>
           <argLine>
