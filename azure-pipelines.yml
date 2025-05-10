@@ -12,8 +12,8 @@ steps:
 
   # Step 2: List the contents of src/test/resources folder
   - script: |
-      echo "Listing contents of src/test/resources folder"
-      ls -l /home/vsts/work/1/s/src/test/resources/
+      echo "Listing contents of src/test/resources/TestRunners/ folder"
+      ls -l /home/vsts/work/1/s/src/test/resources/TestRunners/
     displayName: 'List contents of src/test/resources folder'
 
   # Step 3: Run Maven Tests
