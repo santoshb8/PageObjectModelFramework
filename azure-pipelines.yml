@@ -10,11 +10,11 @@ steps:
       mkdir -p screenshot
     displayName: 'Create screenshots folder'
 
-  # Step 2: Set Permissions for Testrunners Folder
+  # Step 2: List the contents of src/test/resources folder
   - script: |
-      echo "Setting permissions for the files in the Testrunners folder"
-      sudo chmod -R 755 /home/vsts/work/1/s/src/test/resources/Testrunners/
-    displayName: 'Set Permissions for Testrunners Folder'
+      echo "Listing contents of src/test/resources folder"
+      ls -l /home/vsts/work/1/s/src/test/resources/
+    displayName: 'List contents of src/test/resources folder'
 
   # Step 3: Run Maven Tests
   - task: Maven@3
