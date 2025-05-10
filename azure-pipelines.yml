@@ -1,5 +1,7 @@
 trigger:
-  - azuredevops  # Change to your default branch name if needed
+  branches:
+    include:
+      - azuredevops  # Change this to your actual default branch if different
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -7,14 +9,14 @@ pool:
 steps:
   # Step 1: Create screenshots/ folder if not exists
   - script: |
-      mkdir -p screenshot
+      mkdir -p screenshots
     displayName: 'Create screenshots folder'
 
-  # Step 2: List the contents of src/test/resources folder
+  # Step 2: List the contents of src/test/resources/TestRunners folder
   - script: |
       echo "Listing contents of src/test/resources/TestRunners/ folder"
-      ls -l /home/vsts/work/1/s/src/test/resources/TestRunners/
-    displayName: 'List contents of src/test/resources folder'
+      ls -l src/test/resources/TestRunners/
+    displayName: 'List contents of TestRunners folder'
 
   # Step 3: Run Maven Tests
   - task: Maven@3
@@ -22,13 +24,15 @@ steps:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
       options: '-Dsurefire.suiteXmlFiles=src/test/resources/TestRunners/testng_regression.xml'
+    displayName: 'Run Maven TestNG Suite'
 
-  # Step 4: Publish Allure Raw Results (Optional - good for debugging)
+  # Step 4: Publish Allure Raw Results
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: 'allure-results'
       artifact: 'allure-results'
       publishLocation: 'pipeline'
+    displayName: 'Publish Allure Raw Results'
 
   # Step 5: Install Allure CLI
   - script: |
@@ -47,6 +51,7 @@ steps:
       targetPath: 'allure-report'
       artifact: 'allure-report'
       publishLocation: 'pipeline'
+    displayName: 'Publish Allure Report'
 
   # Step 8: Publish Extent Reports Folder
   - task: PublishPipelineArtifact@1
@@ -54,10 +59,12 @@ steps:
       targetPath: 'reports'
       artifact: 'extent-reports'
       publishLocation: 'pipeline'
+    displayName: 'Publish Extent Reports'
 
-  # Step 9: Publish Screenshots Folder (optional if you want screenshots separately too)
+  # Step 9: Publish Screenshots Folder
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: 'screenshots'
       artifact: 'screenshots'
       publishLocation: 'pipeline'
+    displayName: 'Publish Screenshots'
