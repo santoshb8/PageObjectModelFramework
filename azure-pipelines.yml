@@ -1,22 +1,23 @@
 trigger:
   branches:
     include:
-      - azuredevops  # Change this to your actual default branch if different
+      - azuredevops  # Adjust if your main branch is different
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # Step 1: Create screenshots/ folder if not exists
+  # Step 1: Create screenshots/ folder in the working directory Java sees
   - script: |
-      mkdir -p screenshots
-    displayName: 'Create screenshots folder'
+      echo "Creating screenshots directory in Java's working directory"
+      mkdir -p $(System.DefaultWorkingDirectory)/screenshots
+    displayName: 'Ensure screenshots folder exists for Java'
 
-  # Step 2: List the contents of src/test/resources/TestRunners folder
+  # Step 2: List contents for verification
   - script: |
-      echo "Listing contents of src/test/resources/TestRunners/ folder"
+      echo "Listing contents of src/test/resources/TestRunners/"
       ls -l src/test/resources/TestRunners/
-    displayName: 'List contents of TestRunners folder'
+    displayName: 'Verify TestRunners directory contents'
 
   # Step 3: Run Maven Tests
   - task: Maven@3
@@ -61,7 +62,7 @@ steps:
       publishLocation: 'pipeline'
     displayName: 'Publish Extent Reports'
 
-  # Step 9: Publish Screenshots Folder
+  # Step 9: Publish Screenshots Folder (ensure folder exists from Java test runs)
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: 'screenshots'
