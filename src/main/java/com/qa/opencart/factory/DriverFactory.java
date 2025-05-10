@@ -176,19 +176,42 @@ String Browsername = prop.getProperty("browser");
      * take screenshot
      */
 
+//    public static String getScreenshot(String methodName) {
+//        File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);// temp directory
+//        String path = System.getProperty("user.dir") + "/screenshot/" + methodName + "_" + System.currentTimeMillis()
+//                + ".png";
+//
+//        File destination = new File(path);
+//
+//        try {
+//            FileHandler.copy(srcFile, destination);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return path;
+//    }
     public static String getScreenshot(String methodName) {
-        File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);// temp directory
-        String path = System.getProperty("user.dir") + "/screenshot/" + methodName + "_" + System.currentTimeMillis()
-                + ".png";
+        String screenshotDir = System.getProperty("user.dir") + "/screenshot/";
+        File dir = new File(screenshotDir);
 
-        File destination = new File(path);
+        // Create directory if it does not exist
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+        String filePath = screenshotDir + methodName + "_" + System.currentTimeMillis() + ".png";
+        File destination = new File(filePath);
 
         try {
             FileHandler.copy(srcFile, destination);
+            System.out.println("Screenshot saved at: " + destination.getAbsolutePath());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return path;
+        return filePath;
     }
+
 }
