@@ -131,24 +131,24 @@ String Browsername = prop.getProperty("browser");
         try {
             if (envName == null) {
                 System.out.println("No Environemnt running on qa");
-                fi = new FileInputStream("./src/test/Resources/Config/config.qa.properties");
+                fi = new FileInputStream("./src/test/resources/Config/config.qa.properties");
 
             } else {
                 switch (envName.toLowerCase().trim()) {
                     case "qa":
-                        fi = new FileInputStream("./src/test/Resources/Config/config.qa.properties");
+                        fi = new FileInputStream("./src/test/resources/Config/config.qa.properties");
                         break;
                     case "dev":
-                        fi = new FileInputStream("./src/test/Resources/Config/config.dev.properties");
+                        fi = new FileInputStream("./src/test/resources/Config/config.dev.properties");
                         break;
                     case "stage":
-                        fi = new FileInputStream("./src/test/Resources/Config/config.stage.properties");
+                        fi = new FileInputStream("./src/test/resources/Config/config.stage.properties");
                         break;
                     case "uat":
-                        fi = new FileInputStream("./src/test/Resources/Config/config.uat.properties");
+                        fi = new FileInputStream("./src/test/resources/Config/config.uat.properties");
                         break;
                     case "prod":
-                        fi = new FileInputStream("./src/test/Resources/Config/config.prod.properties");
+                        fi = new FileInputStream("./src/test/resources/Config/config.prod.properties");
                         break;
                     default:
                         System.out.println("Please pass teh right environment here");
@@ -162,7 +162,7 @@ String Browsername = prop.getProperty("browser");
         }
 
         try {
-         //   FileInputStream fi = new FileInputStream("./src/test/Resources/Config/config.properties");
+         //   FileInputStream fi = new FileInputStream("./src/test/resources/Config/config.properties");
             prop.load(fi);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

@@ -10,7 +10,7 @@ import com.opencsv.exceptions.CsvException;
 
 public class CSVUtil {
 
-    private static final String CSV_PATH = "./src/test/Resources/testdata/";
+    private static final String CSV_PATH = "./src/test/resources/testdata/";
 
     private static List<String[]> rows;
 
