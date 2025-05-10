@@ -1,5 +1,5 @@
 trigger:
-  - master  # Change to your default branch name if needed
+  - azuredevops  # Change to your default branch name if needed
 
 pool:
   vmImage: 'ubuntu-latest'
