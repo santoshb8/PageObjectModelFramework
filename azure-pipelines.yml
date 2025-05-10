@@ -35,11 +35,15 @@ steps:
       publishLocation: 'pipeline'
     displayName: 'Publish Allure Raw Results'
 
-  # Step 5: Install Allure CLI
+    # Step 5: Install Allure CLI (manually from GitHub)
   - script: |
-      sudo apt-get update
-      sudo apt-get install -y allure
+      wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.27.0.tgz
+      tar -zxvf allure-2.27.0.tgz
+      sudo mv allure-2.27.0 /opt/allure
+      sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+      allure --version
     displayName: 'Install Allure CLI'
+
 
   # Step 6: Generate Allure Final Report
   - script: |
