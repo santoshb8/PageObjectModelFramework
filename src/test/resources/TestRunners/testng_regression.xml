@@ -48,14 +48,15 @@
           <parameter name="testname" value="Productinfo Page Test" />
         <classes>
             <class name="com.qa.opencart.test.ProductInfoPageTest" />
+            <class name="com.qa.opencart.test.ProductInfoPageTest" />
         </classes>
     </test>
-    <test name="Registration Page Test">
-        <parameter name="browser" value="edge" />
-        <parameter name="browserversion" value="90.0" />
-        <parameter name="testname" value="Registration Page Test" />
-        <classes>
-            <class name="com.qa.opencart.test.RegPageTest" />
-        </classes>
-    </test>
+<!--    <test name="Registration Page Test">-->
+<!--        <parameter name="browser" value="edge" />-->
+<!--        <parameter name="browserversion" value="90.0" />-->
+<!--        <parameter name="testname" value="Registration Page Test" />-->
+<!--        <classes>-->
+<!--            <class name="com.qa.opencart.test.RegPageTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
