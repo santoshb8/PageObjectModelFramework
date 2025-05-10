@@ -15,7 +15,7 @@ steps:
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
-      options: '-Dsurefire.suiteXmlFiles=src/test/Resources/Testrunners/testng_regression.xml'
+      options: '-Dsurefire.suiteXmlFiles=src/test/resources/Testrunners/testng_regression.xml'
 
   # Step 3: Publish Allure Raw Results (Optional - good for debugging)
   - task: PublishPipelineArtifact@1
