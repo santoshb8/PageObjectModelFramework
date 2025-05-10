@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.UUID;
 
 public class OptionsManager {
     private Properties prop;
@@ -22,6 +23,12 @@ this.prop = prop;
     public ChromeOptions getChromeOption()
     {
         co = new ChromeOptions();
+        co.addArguments("--headless=new"); // use "--headless" for older versions
+        co.addArguments("--no-sandbox");
+        co.addArguments("--disable-dev-shm-usage");
+        co.addArguments("--disable-gpu");
+        co.addArguments("--remote-allow-origins=*");
+        co.addArguments("--user-data-dir=/tmp/chrome-profile-" + UUID.randomUUID()); // unique profile
         if(Boolean.parseBoolean(prop.getProperty("remote").trim()))
         {
             Log.info("Running in Remote  mode");
