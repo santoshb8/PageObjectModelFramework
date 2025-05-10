@@ -7,8 +7,6 @@
         <listener class-name="com.qa.opencart.listeners.ExtentReportListener" />
         <listener class-name="com.qa.opencart.listeners.TestAllureListener" />
         <listener class-name="com.qa.opencart.listeners.AnnotationTransformer" />
-
-
     </listeners>
     <test name="Login Page Test chrome">
 <parameter name="browser" value="chrome" />
@@ -16,7 +14,6 @@
         <parameter name="testname" value="opencart-Login Page Test" />
         <classes>
             <class name="com.qa.opencart.test.LoginPageTest" />
-
         </classes>
     </test>
     <test name="Login Page Test2 chrome">
@@ -37,23 +34,28 @@
             <class name="com.qa.opencart.test.AccountsPageTest" />
         </classes>
     </test>
-<!--    <test name="SearchPage Page Test">-->
-<!--        <parameter name="browser" value="chrome" />-->
-<!--        <parameter name="browserversion" value="90.0" />-->
-<!--        <classes>-->
-<!--            <class name="com.qa.opencart.test.SearchResultsPageTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--      <test name="Productinfo Page Test">-->
-<!--          <parameter name="browser" value="chrome" />-->
-<!--        <classes>-->
-<!--            <class name="com.qa.opencart.test.ProductInfoPageTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Registration Page Test">-->
-<!--        <parameter name="browser" value="edge" />-->
-<!--        <classes>-->
-<!--            <class name="com.qa.opencart.test.RegPageTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SearchPage Page Test">
+        <parameter name="browser" value="chrome" />
+        <parameter name="browserversion" value="90.0" />
+        <parameter name="testname" value="SearchPage" />
+        <classes>
+            <class name="com.qa.opencart.test.SearchResultsPageTest" />
+        </classes>
+    </test>
+      <test name="Productinfo Page Test">
+          <parameter name="browser" value="chrome" />
+          <parameter name="browserversion" value="90.0" />
+          <parameter name="testname" value="Productinfo Page Test" />
+        <classes>
+            <class name="com.qa.opencart.test.ProductInfoPageTest" />
+        </classes>
+    </test>
+    <test name="Registration Page Test">
+        <parameter name="browser" value="edge" />
+        <parameter name="browserversion" value="90.0" />
+        <parameter name="testname" value="Registration Page Test" />
+        <classes>
+            <class name="com.qa.opencart.test.RegPageTest" />
+        </classes>
+    </test>
 </suite>

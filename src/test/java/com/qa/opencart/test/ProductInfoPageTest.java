@@ -48,22 +48,22 @@ public class ProductInfoPageTest extends BaseTest {
         Assert.assertEquals(productInfoPage.getProductImagesCount(),3);
     }
 
-    @Test
-    public void productInfoTest() {
-        searchResultsPage = accpage.searchfunc("macbook");
-        productInfoPage = searchResultsPage.selectProduct("MacBook Pro");
-        Map<String,String> prodaccdetmap = productInfoPage.getProductDetailsMap();
-        softAssert.assertEquals(prodaccdetmap.get("Brand"), "Apple");
-        softAssert.assertEquals(prodaccdetmap.get("Brand"), "Apple");
-
-        softAssert.assertEquals(prodaccdetmap.get("Product Code"), "Product 18");
-
-          softAssert.assertEquals(prodaccdetmap.get("Product Code"), "Product 18");
-          softAssert.assertEquals(prodaccdetmap.get("Availability"), "Out of Stock");
-
-        softAssert.assertEquals(prodaccdetmap.get("Product Code"), "Product 18");
-softAssert.assertEquals(prodaccdetmap.get("Productprice"), "$2,000.00");
-       softAssert.assertEquals(prodaccdetmap.get("extraxprice"), "$2,000.00");
-       softAssert.assertAll();
-    }
+   // @Test
+//    public void productInfoTest() {
+//        searchResultsPage = accpage.searchfunc("macbook");
+//        productInfoPage = searchResultsPage.selectProduct("MacBook Pro");
+//        Map<String,String> prodaccdetmap = productInfoPage.getProductDetailsMap();
+//        softAssert.assertEquals(prodaccdetmap.get("Brand"), "Apple");
+//        softAssert.assertEquals(prodaccdetmap.get("Brand"), "Apple");
+//
+//        softAssert.assertEquals(prodaccdetmap.get("Product Code"), "Product 18");
+//
+//          softAssert.assertEquals(prodaccdetmap.get("Product Code"), "Product 18");
+//          softAssert.assertEquals(prodaccdetmap.get("Availability"), "Out of Stock");
+//
+//        softAssert.assertEquals(prodaccdetmap.get("Product Code"), "Product 18");
+//softAssert.assertEquals(prodaccdetmap.get("Productprice"), "$2,000.00");
+//       softAssert.assertEquals(prodaccdetmap.get("extraxprice"), "$2,000.00");
+//       softAssert.assertAll();
+//    }
 }

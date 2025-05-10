@@ -121,6 +121,7 @@ public class ElementUtil {
 
     public void doClick(By locator) {
         getElement(locator).click();
+        System.out.println(locator);
     }
 
     public void doClick(By locator, int timeOut) {
